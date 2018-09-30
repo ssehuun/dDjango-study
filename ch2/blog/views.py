@@ -2,6 +2,7 @@
 from django.views.generic import ListView, DetailView
 from django.views.generic.dates import ArchiveIndexView, YearArchiveView, MonthArchiveView
 from django.views.generic.dates import DayArchiveView, TodayArchiveView
+from django.views import View
 
 from blog.models import Post # import model class for lookup table
 from django.http import HttpResponse
@@ -14,10 +15,27 @@ def home(request):
 	return render(request, 'blog/home.html')
 
 def news(request):
-	return render(request, 'blog/news.html')
+	temp = ['문재인', '오바마', '김정은', '푸틴', '아베']
+	context = {'presidents' : temp}
+	return render(request, 'blog/news.html', context = context)
 
 def contact(request):
 	return render(request, 'blog/contact.html')
+
+def test(request, *args, **kwargs): # why?
+	temp = kwargs['year'] * 1000
+	return HttpResponse(temp)
+
+class test1(View):
+	def get(self, request, *args, **kwargs):
+		temp = kwargs['year'] * 1111
+		response = HttpResponse(temp)
+		return response
+
+	def post(self, request, *args, **kwargs):
+		temp = kwargs['year'] * 9999
+		response = HttpResponse(temp)
+		return response
 
 # #-----ListView
 # class PostLV(ListView):

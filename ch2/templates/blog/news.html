@@ -1,0 +1,9 @@
+{% extends "blog/layout.html" %}
+
+{% block body %}
+	{% for person in presidents %}
+		{% if person == "문재인" %}
+			{{person}}
+		{% endif %}
+	{% endfor %}
+{% endblock %}

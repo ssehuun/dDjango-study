@@ -8,6 +8,8 @@ urlpatterns = [
 	path('home', home),
 	path('news', news),
 	path('contact', contact),
+	path('test/<int:year>', test),
+	path('test1/<int:year>', test1.as_view()),
 	# Example: /
 	# url(r'^$', PostLV.as_view(), name='post_list'),
 
