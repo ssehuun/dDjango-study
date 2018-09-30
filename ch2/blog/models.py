@@ -1,6 +1,16 @@
 from django.db import models
 from django.urls import reverse
 
+class Person(models.Model):
+	first_name = models.CharField(max_length=30)
+	last_name = models.CharField(max_length=30)
+	age = models.IntegerField(null = True)
+	modify_date = models.DateTimeField('Modify Date', auto_now=True)
+
+	def __str__(self):
+		return '%s%s' %(self.first_name, self.last_name)
+
+
 class Post(models.Model):
 	title = models.CharField('TITLE', max_length=50)
 	slug = models.SlugField('SLUG', unique=True, allow_unicode=True, help_text='one word for title alias')
@@ -8,7 +18,7 @@ class Post(models.Model):
 	content = models.TextField('CONTENT')
 	create_date = models.DateTimeField('Create Date', auto_now_add=True)
 	modify_date = models.DateTimeField('Modify Date', auto_now=True)
-
+ 
 	class Meta:
 		verbose_name = 'post'
 		verbose_name_plural = 'posts'

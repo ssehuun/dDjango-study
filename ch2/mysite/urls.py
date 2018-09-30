@@ -23,6 +23,6 @@ urlpatterns = [
 	# path('bookmark/', include('bookmark.urls', namespace='bookmark')),
 	# path('blog/', include('blog.urls', namespace='blog')),
     path('bookmark/', include('bookmark.urls')),
-    path('blog/ ', include('blog.urls')),
+    path('blog/', include('blog.urls')),
 	# path('helloWorld/hi', include('blog.urls')),
 ]
